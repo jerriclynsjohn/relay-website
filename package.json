@@ -27,6 +27,7 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "astro-devtool-breakpoints": "^0.3.0",
     "bits-ui": "^0.21.16",
     "clsx": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",

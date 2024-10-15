@@ -45,6 +45,9 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.3.1
         version: 4.3.1(prettier@3.3.3)
+      astro-devtool-breakpoints:
+        specifier: ^0.3.0
+        version: 0.3.0(astro@4.16.4(@types/node@17.0.45)(rollup@4.24.0)(typescript@5.6.3))
       bits-ui:
         specifier: ^0.21.16
         version: 0.21.16(svelte@4.2.19)
@@ -922,6 +925,11 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
+
+  astro-devtool-breakpoints@0.3.0:
+    resolution: {integrity: sha512-Mp2T1xusL6R8IUJ0La8UtEjoQgYx0m2w8EFu9SdqqhR8ggkubrT+XRB92tFgvrDtuMMiXosO9oD/ZXrsGQtVSQ==}
+    peerDependencies:
+      astro: ^4.0.0
 
   astro@4.16.4:
     resolution: {integrity: sha512-W/ETxHRkt9iEAj1RVSqV3bjSGaGXEFJHqeNpPhvJIj720hC3V/ZBDAd6FpMW291eiZPtxhGh+c/VDtkD6avPXQ==}
@@ -4012,6 +4020,10 @@ snapshots:
   array-iterate@2.0.1: {}
 
   astring@1.9.0: {}
+
+  astro-devtool-breakpoints@0.3.0(astro@4.16.4(@types/node@17.0.45)(rollup@4.24.0)(typescript@5.6.3)):
+    dependencies:
+      astro: 4.16.4(@types/node@17.0.45)(rollup@4.24.0)(typescript@5.6.3)
 
   astro@4.16.4(@types/node@17.0.45)(rollup@4.24.0)(typescript@5.6.3):
     dependencies:
