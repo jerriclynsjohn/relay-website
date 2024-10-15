@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from "svelte/elements";
-	import type { InputEvents } from "./index.js";
-	import { cn } from "src/utils.js";
+	import type { InputEvents } from ".";
+	import { cn } from "@utils/style";
 
 	type $$Props = HTMLInputAttributes;
 	type $$Events = InputEvents;

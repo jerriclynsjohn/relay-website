@@ -19,7 +19,7 @@ const legals = defineCollection({
   })
 });
 
-const postsCollection = defineCollection({
+const blogs = defineCollection({
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
@@ -35,5 +35,5 @@ const postsCollection = defineCollection({
 export const collections = {
   changelog: changelog,
   legals: legals,
-  posts: postsCollection
+  blogs: blogs
 };
