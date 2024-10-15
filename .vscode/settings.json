@@ -1,4 +1,13 @@
 {
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "svelte",
+    "astro",
+    "typescript",
+    "typescriptreact"
+  ],
+
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.requireConfig": true,
@@ -18,31 +27,17 @@
   },
 
   "cSpell.words": [
-    "alpinejs",
-    "aperiodical",
-    "aperiodicals",
     "astro",
     "astrojs",
-    "bhaas",
-    "bhas",
     "clsx",
     "commitlint",
-    "consts",
-    "datetime",
     "favicons",
     "ianvs",
     "Jerric",
-    "Jiten",
     "kebabcase",
     "Lyns",
-    "Noto",
-    "Prakashan",
-    "rogerbot",
-    "shiki",
-    "stopword",
     "tailwindcss",
-    "tinacms",
     "tsconfigs",
-    "Vaidya"
+    "tseslint"
   ]
 }
