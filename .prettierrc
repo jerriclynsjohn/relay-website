@@ -1,0 +1,55 @@
+{
+  "useTabs": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "printWidth": 100,
+  "pluginSearchDirs": false,
+  "bracketSameLine": true,
+  "plugins": [
+    "prettier-plugin-astro",
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "<TYPES>",
+    "<TYPES>^[.]",
+    "",
+    "^(@astrojs/(.*)$)|^(@astrojs$)",
+    "^(astro-(.*)$)|^(astro-$)",
+    "",
+    "^(astro/(.*)$)|^(astro$)",
+    "",
+    "<BUILTIN_MODULES>",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^\\$lib/utils",
+    "^\\$lib/",
+    "",
+    "^\\$components/icon/",
+    "^\\$components/atoms/",
+    "^\\$components/molecules/",
+    "^\\$components/organisms/",
+    "^\\$components/",
+    "^\\$(?![^\\/]*\\/)",
+    "^\\$[^/]*\\/[^/]+",
+    "^[./]",
+    "\\.js$",
+    "\\.svelte$",
+    "\\.astro$"
+  ],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true,
+  "importOrderBuiltinModulesToTop": true,
+  "importOrderParserPlugins": ["typescript"],
+  "importOrderMergeDuplicateImports": true,
+  "importOrderCombineTypeAndValueImports": true,
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
+}
