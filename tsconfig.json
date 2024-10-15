@@ -6,6 +6,10 @@
       "$lib/*": ["./src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"],
+      "@content/*": ["content/*"],
+      "@data/*": ["data/*"],
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/styles/*"]
     }

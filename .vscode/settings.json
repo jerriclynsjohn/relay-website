@@ -25,6 +25,7 @@
     "astrojs",
     "bhaas",
     "bhas",
+    "clsx",
     "commitlint",
     "consts",
     "datetime",
