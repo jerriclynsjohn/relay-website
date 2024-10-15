@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Cache and logs
+.cache/
+*.log
+
+# Config files
+*.config.js
+*.config.cjs
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# VSCode settings
+.vscode/
+
+# Content files
+src/content/
+
+# Other
+.DS_Store
