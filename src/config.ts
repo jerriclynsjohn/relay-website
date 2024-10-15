@@ -99,51 +99,15 @@ export const SOCIALS: SocialObjects = [
     active: false
   },
   {
-    name: 'TikTok',
-    href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on TikTok`,
-    active: false
-  },
-  {
-    name: 'CodePen',
-    href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on CodePen`,
-    active: false
-  },
-  {
     name: 'Discord',
     href: 'https://github.com/relaynow',
     linkTitle: `${SITE.title} on Discord`,
     active: false
   },
   {
-    name: 'GitLab',
-    href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on GitLab`,
-    active: false
-  },
-  {
     name: 'Reddit',
     href: 'https://github.com/relaynow',
     linkTitle: `${SITE.title} on Reddit`,
-    active: false
-  },
-  {
-    name: 'Skype',
-    href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Skype`,
-    active: false
-  },
-  {
-    name: 'Steam',
-    href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Steam`,
-    active: false
-  },
-  {
-    name: 'Telegram',
-    href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Telegram`,
     active: false
   },
   {
