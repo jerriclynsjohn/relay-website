@@ -2,6 +2,7 @@
   "name": "relay-website",
   "type": "module",
   "version": "0.0.1",
+  "author": "Jerric Lyns John <x@jerric.xyz> (https://jerric.xyz)",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
