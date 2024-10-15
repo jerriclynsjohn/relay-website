@@ -41,5 +41,10 @@ export default defineConfig({
       themes: { light: 'min-light', dark: 'night-owl' },
       wrap: true
     }
+  },
+  vite: {
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js']
+    }
   }
 });

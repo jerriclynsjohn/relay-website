@@ -1,5 +1,7 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ['class'],
@@ -58,7 +60,8 @@ const config = {
         sans: ['Inter', ...fontFamily.sans]
       }
     }
-  }
+  },
+  plugins: [typography]
 };
 
 export default config;

@@ -1,0 +1,79 @@
+---
+import '@styles/app.css';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+import { SITE_DATA } from '@config';
+
+const {
+  title = SITE_DATA.blog.headline,
+  description = SITE_DATA.blog.description,
+  image = SITE_DATA.blog.image,
+  blogs = SITE_DATA.blog.blogs
+} = Astro.props;
+
+const url = new URL(Astro.url.pathname, Astro.site).href;
+
+let structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  url,
+  name: title,
+  description,
+  image,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_DATA.organization.name,
+    logo: {
+      '@type': 'ImageObject',
+      url: SITE_DATA.organization.logo
+    }
+  },
+  blogPosts: []
+};
+
+if (blogs && blogs.length > 0) {
+  structuredData = {
+    ...structuredData,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    blogPosts: blogs.map((blog: any) => ({
+      '@type': 'BlogPosting',
+      headline: blog.title,
+      description: blog.description,
+      url: blog.url,
+      datePublished: blog.publishDate,
+      author: {
+        '@type': 'Person',
+        name: blog.author
+      }
+    }))
+  };
+}
+---
+
+<BaseLayout>
+  <Fragment slot="meta">
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Google JSON-LD Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <slot />
+</BaseLayout>

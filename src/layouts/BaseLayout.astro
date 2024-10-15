@@ -1,25 +1,31 @@
 ---
 import '@styles/app.css';
+
+import BaseMeta from '@components/common/meta/BaseMeta.astro';
+import Favicons from '@components/common/meta/Favicons.astro';
+import Verifications from '@components/common/meta/Verifications.astro';
+import { LOCALE, VERIFICATION_TOKENS } from '@config';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang=`${LOCALE.lang ?? "en"}` class="smooth-scroll">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <BaseMeta />
 
-    <!-- Preconnect to own domain -->
-    <link rel="preconnect" href="https://relay.now/" />
+    <Favicons />
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/favicons/favicon-48x48.png" sizes="48x48" />
-    <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
-    <link rel="shortcut icon" href="/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Relay" />
-    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <!-- Verification Metatags -->
+    <Verifications googleSiteVerification={VERIFICATION_TOKENS.google} />
 
-    <meta name="generator" content={Astro.generator} />
-    <title>Relay</title>
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Remainder of the meta tags -->
+    <slot name="meta" />
+
+    <!-- Toggle Theme -->
+    <script is:inline src="/toggle-theme.js" async></script>
   </head>
 
   <body>
