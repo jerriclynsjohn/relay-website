@@ -1,7 +1,9 @@
 ---
-page: Terms
-pubDate: 2024-01-01
+title: Terms
+description: 'Understand our Terms of Service, including user rights, responsibilities, and legal obligations when using Relay services. Learn about our policies on data usage, content guidelines, and service limitations.'
+pubDatetime: 2024-01-01T15:22:00Z
 ---
+
 This privacy policy sets out how Unwrapped AB collects, processes and uses your Personal Information through your use of our Services.
 
 ### Definitions
@@ -32,13 +34,14 @@ We may, from time to time, obtain Personal Information from third parties to ena
 
 With respect to Personal Information we hold, you have the following rights:
 
-*   Access: You may request from us access to your data that we hold on you.
+- Access: You may request from us access to your data that we hold on you.
 
-    li
-*   Rectification: If the data we hold on you is inaccurate, you may request that we correct it. If the data we hold is incomplete, you may request that we complete it.
-*   Erasure: Subject to certain conditions, you may request that we erase all of the data we hold on you. li Restrictions: Subject to certain conditions, you may request that we restrict the processing of data we hold on you.
-*   Portability: Subject to certain conditions, you may request that we transfer all the data we hold on you to a third party (including yourself).
-*   Objections: Subject to certain conditions, you may object to us processing the data we hold on you.
+  li
+
+- Rectification: If the data we hold on you is inaccurate, you may request that we correct it. If the data we hold is incomplete, you may request that we complete it.
+- Erasure: Subject to certain conditions, you may request that we erase all of the data we hold on you. li Restrictions: Subject to certain conditions, you may request that we restrict the processing of data we hold on you.
+- Portability: Subject to certain conditions, you may request that we transfer all the data we hold on you to a third party (including yourself).
+- Objections: Subject to certain conditions, you may object to us processing the data we hold on you.
 
 ### Social Media
 
@@ -56,7 +59,7 @@ Our website contains links to other third-party websites not owned or managed by
 
 You can make payments via our website. Our vendors are listed below:
 
-*   Paypal
+- Paypal
 
 Their privacy policy can be viewed [here](https://www.paypal.com/webapps/mpp/ua/privacy-full)
 

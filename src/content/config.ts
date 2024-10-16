@@ -3,11 +3,19 @@ import { glob } from 'astro/loaders';
 import { defineCollection, reference, z } from 'astro:content';
 
 const legal = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/legals' }),
-  schema: z.object({
-    page: z.string(),
-    pubDate: z.date().optional()
-  })
+  loader: glob({ pattern: '**/*.md', base: './src/content/legal' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      ogImage: image()
+        .refine((img) => img.width >= 1200 && img.height >= 630, {
+          message: 'OpenGraph image must be at least 1200 X 630 pixels!'
+        })
+        .or(z.string())
+        .optional(),
+      pubDatetime: z.date().optional()
+    })
 });
 
 const author = defineCollection({

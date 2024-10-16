@@ -1,7 +1,9 @@
 ---
-page: Privacy
-pubDate: 2024-01-01
+title: Privacy
+description: 'Learn about our privacy practices and your rights under the California Consumer Privacy Act (CCPA). Understand how we collect, use, and protect your personal information.'
+pubDatetime: 2024-01-01T15:22:00Z
 ---
+
 If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act of 2020 (“**CCPA**”), requires us to provide some additional information to California residents. This Section only applies to you if you are a California resident, although please note that this information and the rights afforded herein are the same as offered to our other users in our main Privacy Policy. This Section does not apply to personal information we collect from our employees and job applicants in their capacity as employees and job applicants, as such information practices are described in separate policies.
 
 The following chart details these activities:
@@ -82,9 +84,6 @@ Please see the “Your rights with respect to your information” section of our
 
 Retention of Your Personal Information. Please see the “Retention Of Your Information” section belowof our Privacy Policy for more information.
 
-Shine the Light Disclosure
---------------------------
+## Shine the Light Disclosure
 
 The California "Shine the Light" law gives residents of California the right under certain circumstances to request information from us regarding the manner in which we disclose certain categories of personal information (as defined in the Shine the Light law) with third parties for their direct marketing purposes. We currently do not disclose your personal information to third parties for their own direct marketing purposes.
-
-

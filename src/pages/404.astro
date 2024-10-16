@@ -1,0 +1,17 @@
+---
+import MarketingLayout from '@layouts/MarketingLayout.astro';
+
+import { buttonVariants } from '@components/ui/button';
+import { SITE_DATA } from '@config';
+---
+
+<MarketingLayout title={`404 Not Found | ${SITE_DATA.product.name}`}>
+  <main id="main-content">
+    <div class="not-found-wrapper">
+      <h1>404</h1>
+      <span aria-hidden="true">¯\_(ツ)_/¯</span>
+      <p>Page Not Found</p>
+      <a href="/" class={buttonVariants({ variant: 'default' })}>Go back home</a>
+    </div>
+  </main>
+</MarketingLayout>

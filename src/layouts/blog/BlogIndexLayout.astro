@@ -37,11 +37,29 @@ let structuredData = [
     isPartOf: {
       '@id': `${TOP_NAVIGATION.landing}/#website`
     },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: TOP_NAVIGATION.landing
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: url
+        }
+      ]
+    },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: paginatedBlogs(blogs),
+      name: 'Blog Entries',
       numberOfItems: blogs.length,
-      itemListOrder: 'https://schema.org/ItemListOrderAscending'
+      itemListOrder: 'https://schema.org/ItemListOrderDescending',
+      itemListElement: paginatedBlogs(blogs)
     }
   },
   website(),

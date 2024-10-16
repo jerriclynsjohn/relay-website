@@ -22,7 +22,7 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
 let structuredData = [
   {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
+    '@type': 'CollectionPage',
     '@id': url,
     url,
     name: title,
@@ -37,11 +37,29 @@ let structuredData = [
     isPartOf: {
       '@id': `${TOP_NAVIGATION.landing}/#website`
     },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: TOP_NAVIGATION.landing
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Changelog',
+          item: url
+        }
+      ]
+    },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: paginatedChangelogs(changelogs),
+      name: 'Changelog Entries',
       numberOfItems: changelogs.length,
-      itemListOrder: 'https://schema.org/ItemListOrderAscending'
+      itemListOrder: 'https://schema.org/ItemListOrderDescending',
+      itemListElement: paginatedChangelogs(changelogs)
     }
   },
   website(),
