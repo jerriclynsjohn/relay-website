@@ -46,7 +46,8 @@ const computedBlog = {
   dateModified: blog.data.modDatetime?.toISOString() ?? '',
   image: ogUrl,
   url: `${TOP_NAVIGATION.blog}/${blog.id}`,
-  author: author.data as Author
+  author: author.data as Author,
+  tags: blog.data.tags
 } satisfies Blog;
 
 const { Content } = await render(blog);
@@ -66,20 +67,7 @@ const nextPost =
 ---
 
 <BlogLayout blog={computedBlog} author={author.data as Author}>
-  <button
-    class={buttonVariants({ variant: 'default' })}
-    onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()">
-    <span>Go back</span>
-  </button>
-  <div class="text-2xl font-bold">
-    {blog.data.title}
-  </div>
-  <div class="text-xl">
-    {blog.data.description}
-  </div>
-  <div class="mt-4 px-4">
-    <Content class="prose" />
-  </div>
+  <Content />
 
   <button id="back-to-top" class={buttonVariants({ variant: 'default' })}>
     <span>Back to Top</span>

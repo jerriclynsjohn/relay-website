@@ -1,5 +1,7 @@
+import scrollbar from 'tailwind-scrollbar-hide';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
+import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
@@ -61,7 +63,7 @@ const config = {
       }
     }
   },
-  plugins: [typography]
+  plugins: [typography, forms, scrollbar]
 };
 
 export default config;

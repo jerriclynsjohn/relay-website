@@ -86,9 +86,19 @@ let structuredData = [
     />
   </Fragment>
 
-  <div>
-    <h1>{title}</h1>
-    <div>{new Date(datePublished).toLocaleDateString()}</div>
-    <slot />
-  </div>
+  <section class="bg-white lg:p-8">
+    <div class="mx-auto px-8 py-12 md:px-12 lg:px-16 lg:py-32 xl:px-36 2xl:max-w-7xl">
+      <div class="mx-auto max-w-2xl">
+        <span class="text-blue-400"
+          >Last updated {new Date(datePublished).toLocaleDateString()}</span
+        >
+        <h1 class="mt-6 text-3xl font-light tracking-tight text-black lg:text-4xl">
+          {title}
+        </h1>
+      </div>
+      <div class="prose-styles mt-12">
+        <slot />
+      </div>
+    </div>
+  </section>
 </BaseLayout>

@@ -44,6 +44,12 @@
 }
 
 @layer base {
+  .prose-styles {
+    @apply prose mx-auto text-zinc-500 prose-headings:font-normal prose-headings:text-black prose-a:font-semibold prose-a:text-blue-300 hover:prose-a:text-black prose-blockquote:text-blue-400 prose-strong:text-blue-500 prose-code:text-blue-400 prose-pre:rounded-2xl prose-img:rounded-3xl;
+  }
+}
+
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

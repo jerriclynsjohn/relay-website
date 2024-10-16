@@ -5,6 +5,7 @@ import { authorJSONLD, publisher, website } from '@utils/json-ld';
 
 import BaseLayout from '@layouts/BaseLayout.astro';
 
+import { buttonVariants } from '@components/ui/button';
 import { LOCALE, TOP_NAVIGATION } from '@config';
 
 interface Props {
@@ -102,5 +103,51 @@ let structuredData = [
     />
   </Fragment>
 
-  <slot />
+  <section class="bg-white">
+    <div
+      class="mx-auto grid grid-cols-1 px-8 py-24 md:grid-cols-4 md:px-12 lg:px-16 lg:py-36 xl:px-36 2xl:max-w-7xl">
+      <div class="hidden md:block">
+        <div id="table-of-contents" class="lg:sticker top-36 space-y-12 lg:sticky">
+          <p>Table of Contents</p>
+        </div>
+      </div>
+      <div class="pt-24 md:col-span-3 lg:col-span-2 lg:pt-0">
+        <div class="prose-styles">
+          <div class="border-b pb-12">
+            <div class="not-prose space-x-1">
+              {
+                blog.tags &&
+                  blog.tags.map((tag) => (
+                    <span class="text-xs capitalize text-zinc-500">{tag}</span>
+                    // <a
+                    //   class="text-zinc-500 text-xs  capitalize"
+                    //   href={`/tags/${tag}`}>
+                    //   {tag}
+                    // </a>
+                  ))
+              }
+            </div>
+            <p class="mt-6 text-3xl font-light tracking-tight text-black lg:text-4xl">
+              {blog.headline}
+            </p>
+            <p class="-mt-6 font-light text-zinc-500">
+              {blog.description}
+            </p>
+            <p class="mt-3 text-sm font-medium text-black">
+              By {author.name} ⏤
+              <time class="text-xs" datetime={blog.datePublished}>
+                {new Date(blog.datePublished).toLocaleDateString()}
+              </time>
+            </p>
+          </div>
+          <button
+            class={buttonVariants({ variant: 'default' })}
+            onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()">
+            <span>Go back</span>
+          </button>
+          <slot />
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

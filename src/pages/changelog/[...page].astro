@@ -9,6 +9,7 @@ import { slugifyStr } from '@utils/slugify';
 
 import ChangelogIndexLayout from '@layouts/changelog/ChangelogIndexLayout.astro';
 
+import Entries from '@components/changelog/Entries.astro';
 import Pagination from '@components/common/Pagination.astro';
 import { CHANGELOG_PER_INDEX, TOP_NAVIGATION } from '@config';
 
@@ -45,19 +46,33 @@ const changelogs: Changelog[] = await Promise.all(
 ---
 
 <ChangelogIndexLayout changelogs={changelogs}>
-  <div class="flex min-h-screen flex-col items-center justify-center">
-    <h1 class="text-4xl font-bold">Changelog</h1>
-    <p class="text-lg">The only assistant you will ever need!</p>
-    <ul>
-      {
-        page.data.map((changelog) => (
-          <li class="text-lg text-gray-700">
-            <a href={`/changelog/${changelog.id}`}>{changelog.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <section class="bg-white lg:p-8">
+    <div class="mx-auto px-8 py-12 md:px-12 lg:px-16 lg:py-32 xl:px-36 2xl:max-w-7xl">
+      <div class="relative text-center">
+        <span class="text-black"> Changelog </span>
+        <h2 class="mt-6 text-3xl font-light tracking-tight text-black lg:text-4xl">
+          Follow our journey <span class="block text-zinc-400">and keep track of us.</span
+          >
+        </h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-2xl">
+        {
+          page.data
+            .slice()
+            .map((changelog) => (
+              <Entries
+                url={'/changelog/' + changelog.id}
+                title={changelog.data.title}
+                description={changelog.data.description}
+                alt={changelog.data.title}
+                pubDatetime={changelog.data.pubDatetime.toString().slice(4, 15)}
+                image={changelog.data.image.url}
+              />
+            ))
+        }
+      </div>
+    </div>
+  </section>
 
   <Pagination page={page} />
 </ChangelogIndexLayout>
