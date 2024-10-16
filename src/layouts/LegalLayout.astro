@@ -46,7 +46,11 @@ let structuredData = {
     <meta property="twitter:image" content={image} />
 
     <!-- Google JSON-LD Structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(structuredData)}
+    />
   </Fragment>
 
   <slot />

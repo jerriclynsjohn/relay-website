@@ -1,0 +1,63 @@
+---
+import type { Author, Changelog } from '@types';
+import type { GetStaticPaths } from 'astro';
+
+import { getCollection, getEntry } from 'astro:content';
+
+import getSortedChangelogs from '@utils/changelog/getSortedChangelogs';
+import { slugifyStr } from '@utils/slugify';
+
+import ChangelogIndexLayout from '@layouts/changelog/ChangelogIndexLayout.astro';
+
+import Pagination from '@components/common/Pagination.astro';
+import { CHANGELOG_PER_INDEX, TOP_NAVIGATION } from '@config';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const changelogs = await getCollection('changelog', ({ data }) => !data.draft);
+  const sortedChangelogs = getSortedChangelogs(changelogs);
+  return paginate(sortedChangelogs, { pageSize: CHANGELOG_PER_INDEX });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+const changelogs: Changelog[] = await Promise.all(
+  page.data.map(async (changelog) => {
+    const author = await getEntry('author', changelog.data.author.id);
+    const ogImageUrl =
+      typeof changelog.data.ogImage === 'string'
+        ? changelog.data.ogImage
+        : changelog.data.ogImage?.src;
+    const ogUrl = new URL(
+      ogImageUrl ?? `/changelog/${slugifyStr(changelog.data.title)}.png`,
+      Astro.url.origin
+    ).href;
+
+    return {
+      headline: changelog.data.title,
+      description: changelog.data.description,
+      author: author.data as Author,
+      datePublished: changelog.data.pubDatetime.toISOString(),
+      image: ogUrl,
+      url: `${TOP_NAVIGATION.changelog}/${changelog.id}`
+    } satisfies Changelog;
+  })
+);
+---
+
+<ChangelogIndexLayout changelogs={changelogs}>
+  <div class="flex min-h-screen flex-col items-center justify-center">
+    <h1 class="text-4xl font-bold">Changelog</h1>
+    <p class="text-lg">The only assistant you will ever need!</p>
+    <ul>
+      {
+        page.data.map((changelog) => (
+          <li class="text-lg text-gray-700">
+            <a href={`/changelog/${changelog.id}`}>{changelog.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <Pagination page={page} />
+</ChangelogIndexLayout>

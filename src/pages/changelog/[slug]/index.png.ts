@@ -4,22 +4,22 @@ import type { CollectionEntry } from 'astro:content';
 
 import { getCollection, getEntry } from 'astro:content';
 
-import { generateOgImageForBlog } from '@utils/og/generateOgImages';
+import { generateOgImageForChangelog } from '@utils/og/generateOgImages';
 import { slugifyStr } from '@utils/slugify';
 
 export async function getStaticPaths() {
-  const blogs = await getCollection('blog').then((blog) =>
-    blog.filter(({ data }) => !data.draft && !data.ogImage)
+  const changelogs = await getCollection('changelog').then((changelog) =>
+    changelog.filter(({ data }) => !data.draft && !data.ogImage)
   );
 
   return Promise.all(
-    blogs.map(async (blog) => {
-      const author = await getEntry('author', blog.data.author.id);
+    changelogs.map(async (changelog) => {
+      const author = await getEntry('author', changelog.data.author.id);
 
       return {
-        params: { slug: slugifyStr(blog.data.title) },
+        params: { slug: slugifyStr(changelog.data.title) },
         props: {
-          blog: blog,
+          changelog: changelog,
           author: author.data
         }
       };
@@ -29,8 +29,8 @@ export async function getStaticPaths() {
 
 export const GET: APIRoute = async ({ props }) =>
   new Response(
-    await generateOgImageForBlog(
-      props.blog as CollectionEntry<'blog'>,
+    await generateOgImageForChangelog(
+      props.changelog as CollectionEntry<'changelog'>,
       props.author as Author
     ),
     {

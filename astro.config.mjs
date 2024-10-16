@@ -11,11 +11,11 @@ import { defineConfig } from 'astro/config';
 import remarkCollapse from 'remark-collapse';
 import remarkToc from 'remark-toc';
 
-import { SITE } from './src/config';
+import { TOP_NAVIGATION } from './src/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
+  site: TOP_NAVIGATION.landing,
   integrations: [
     svelte(),
     mdx(),

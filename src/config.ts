@@ -1,4 +1,9 @@
-import type { Metadata, Site, SocialObjects } from '@types';
+import type { Metadata, SocialObjects } from '@types';
+
+export const BLOG_PER_INDEX = 10;
+export const CHANGELOG_PER_INDEX = 2;
+export const SCHEDULED_BLOG_MARGIN = 15 * 60 * 1000; // 15 minutes
+export const SCHEDULED_CHANGELOG_MARGIN = 15 * 60 * 1000; // 15 minutes
 
 export const LOCALE = {
   lang: 'en', // html lang code. Set this empty and default will be "en"
@@ -51,9 +56,6 @@ export const TOP_NAVIGATION = {
   documentation: 'https://www.relay.now/docs'
 };
 
-export const POST_PER_INDEX = 6;
-export const SCHEDULED_POST_MARGIN = 15 * 60 * 1000; // 15 minutes
-
 export const SITE_DATA: Metadata = {
   organization: {
     name: 'Relay',
@@ -97,115 +99,89 @@ export const SITE_DATA: Metadata = {
   }
 };
 
-export const SITE: Site = {
-  website: 'https://www.relay.now/', // replace this with your deployed domain
-  author: 'Jerric Lyns John',
-  profile: 'https://www.jerric.xyz/',
-  desc: 'A platform for creating your own AI Agents',
-  title: 'Relay',
-  ogImage: 'images/relay-og.jpg',
-  lightAndDarkMode: true,
-  postPerIndex: 4,
-  postPerPage: 3,
-  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  showArchives: true,
-  editPost: {
-    url: 'https://github.com/jerriclynsjohn/relay-website/edit/main/src/content/blog',
-    text: 'Suggest Changes',
-    appendFilePath: true
-  }
-};
-
-export const LOGO_IMAGE = {
-  enable: false,
-  svg: true,
-  width: 216,
-  height: 46
-};
-
 export const SOCIALS: SocialObjects = [
   {
     name: 'Github',
     href: 'https://github.com/relaynow',
-    linkTitle: ` ${SITE.title} on Github`,
+    linkTitle: ` ${SITE_DATA.organization.name} on Github`,
     active: true
   },
   {
     name: 'Facebook',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Facebook`,
+    linkTitle: `${SITE_DATA.organization.name} on Facebook`,
     active: true
   },
   {
     name: 'Instagram',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Instagram`,
+    linkTitle: `${SITE_DATA.organization.name} on Instagram`,
     active: true
   },
   {
     name: 'LinkedIn',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on LinkedIn`,
+    linkTitle: `${SITE_DATA.organization.name} on LinkedIn`,
     active: true
   },
   {
     name: 'Mail',
     href: 'mailto:hello@relay.now',
-    linkTitle: `Send an email to ${SITE.title}`,
+    linkTitle: `Send an email to ${SITE_DATA.organization.name}`,
     active: false
   },
   {
     name: 'Twitter',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Twitter`,
+    linkTitle: `${SITE_DATA.organization.name} on Twitter`,
     active: false
   },
   {
     name: 'Twitch',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Twitch`,
+    linkTitle: `${SITE_DATA.organization.name} on Twitch`,
     active: false
   },
   {
     name: 'YouTube',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on YouTube`,
+    linkTitle: `${SITE_DATA.organization.name} on YouTube`,
     active: false
   },
   {
     name: 'WhatsApp',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on WhatsApp`,
+    linkTitle: `${SITE_DATA.organization.name} on WhatsApp`,
     active: false
   },
   {
     name: 'Snapchat',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Snapchat`,
+    linkTitle: `${SITE_DATA.organization.name} on Snapchat`,
     active: false
   },
   {
     name: 'Pinterest',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Pinterest`,
+    linkTitle: `${SITE_DATA.organization.name} on Pinterest`,
     active: false
   },
   {
     name: 'Discord',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Discord`,
+    linkTitle: `${SITE_DATA.organization.name} on Discord`,
     active: false
   },
   {
     name: 'Reddit',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Reddit`,
+    linkTitle: `${SITE_DATA.organization.name} on Reddit`,
     active: false
   },
   {
     name: 'Mastodon',
     href: 'https://github.com/relaynow',
-    linkTitle: `${SITE.title} on Mastodon`,
+    linkTitle: `${SITE_DATA.organization.name} on Mastodon`,
     active: false
   }
 ];

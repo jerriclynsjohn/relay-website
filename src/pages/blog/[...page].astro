@@ -4,18 +4,18 @@ import type { GetStaticPaths } from 'astro';
 
 import { getCollection, getEntry } from 'astro:content';
 
-import getSortedBlogs from '@utils/getSortedBlogs';
+import getSortedBlogs from '@utils/blog/getSortedBlogs';
 import { slugifyStr } from '@utils/slugify';
 
 import BlogIndexLayout from '@layouts/blog/BlogIndexLayout.astro';
 
 import Pagination from '@components/common/Pagination.astro';
-import { POST_PER_INDEX, TOP_NAVIGATION } from '@config';
+import { BLOG_PER_INDEX, TOP_NAVIGATION } from '@config';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const blogs = await getCollection('blog', ({ data }) => !data.draft);
   const sortedBlogs = getSortedBlogs(blogs);
-  return paginate(sortedBlogs, { pageSize: POST_PER_INDEX });
+  return paginate(sortedBlogs, { pageSize: BLOG_PER_INDEX });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
@@ -43,7 +43,7 @@ const blogs: Blog[] = await Promise.all(
 );
 ---
 
-<BlogIndexLayout blogs={blogs} page={page.start}>
+<BlogIndexLayout blogs={blogs}>
   <div class="flex min-h-screen flex-col items-center justify-center">
     <h1 class="text-4xl font-bold">Blog</h1>
     <p class="text-lg">The only assistant you will ever need!</p>

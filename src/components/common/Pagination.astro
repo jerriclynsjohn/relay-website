@@ -5,7 +5,7 @@ import type { CollectionEntry } from 'astro:content';
 import LinkButton from './LinkButton.astro';
 
 export interface Props {
-  page: Page<CollectionEntry<'blog'>>;
+  page: Page<CollectionEntry<'blog'>> | Page<CollectionEntry<'changelog'>>;
 }
 
 const { page } = Astro.props;

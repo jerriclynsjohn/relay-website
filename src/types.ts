@@ -1,24 +1,5 @@
 import type socialIcons from '@assets/socialIcons';
 
-export type Site = {
-  website: string;
-  author: string;
-  profile: string;
-  desc: string;
-  title: string;
-  ogImage?: string;
-  lightAndDarkMode: boolean;
-  postPerIndex: number;
-  postPerPage: number;
-  scheduledPostMargin: number;
-  showArchives?: boolean;
-  editPost?: {
-    url?: URL['href'];
-    text?: string;
-    appendFilePath?: boolean;
-  };
-};
-
 export type SocialObjects = {
   name: keyof typeof socialIcons;
   href: string;
@@ -55,7 +36,9 @@ export type Metadata = {
 export type Organization = {
   name: string;
   description: string;
-  contactPoint: ContactPoint;
+  contactPoint: {
+    email: string;
+  };
   url: string;
   logo: string;
   slogan: string;
@@ -64,10 +47,6 @@ export type Organization = {
   foundingDate: string;
   knowsLanguage: string[];
   knowsAbout: string[];
-};
-
-export type ContactPoint = {
-  email: string;
 };
 
 export type Product = {
@@ -86,16 +65,6 @@ export type Feature = {
   url: string;
 };
 
-export type Blog = {
-  headline: string;
-  description: string;
-  author: Author;
-  datePublished: string;
-  dateModified: string;
-  image: string;
-  url: string;
-};
-
 export type Author = {
   name: string;
   jobTitle: string;
@@ -110,12 +79,21 @@ export type Author = {
   }[];
 };
 
-export type Changelog = {
-  name: string;
+export type Blog = {
+  headline: string;
   description: string;
-  image: string;
-  url: string;
-  author: Author[];
+  author: Author;
   datePublished: string;
   dateModified: string;
+  image: string;
+  url: string;
+};
+
+export type Changelog = {
+  headline: string;
+  description: string;
+  author: Author;
+  datePublished: string;
+  image: string;
+  url: string;
 };

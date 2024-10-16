@@ -1,7 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 
+import { slugifyStr } from '../slugify';
 import postFilter from './blogFilter';
-import { slugifyStr } from './slugify';
 
 interface Tag {
   tag: string;

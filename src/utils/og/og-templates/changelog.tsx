@@ -1,8 +1,11 @@
 import satori from "satori";
-import { SITE } from "@config";
+import type { CollectionEntry } from "astro:content";
+import { SITE_DATA } from "@config";
 import loadGoogleFonts, { type FontOptions } from "../loadGoogleFont";
+import type { Author } from "@types";
 
-export default async () => {
+export default async (changelog: CollectionEntry<"changelog">, author: Author) => {
+
   return satori(
     <div
       style={{
@@ -53,33 +56,41 @@ export default async () => {
             height: "90%",
           }}
         >
-          <div
+          <p
             style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "90%",
-              maxHeight: "90%",
+              fontSize: 72,
+              fontWeight: "bold",
+              maxHeight: "84%",
               overflow: "hidden",
-              textAlign: "center",
             }}
           >
-            <p style={{ fontSize: 72, fontWeight: "bold" }}>{SITE.title}</p>
-            <p style={{ fontSize: 28 }}>{SITE.desc}</p>
-          </div>
-
+            {changelog.data.title}
+          </p>
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "space-between",
               width: "100%",
               marginBottom: "8px",
               fontSize: 28,
             }}
           >
+            <span>
+              by{" "}
+              <span
+                style={{
+                  color: "transparent",
+                }}
+              >
+                "
+              </span>
+              <span style={{ overflow: "hidden", fontWeight: "bold" }}>
+                {author.name }
+              </span>
+            </span>
+
             <span style={{ overflow: "hidden", fontWeight: "bold" }}>
-              {new URL(SITE.website).hostname}
+              {SITE_DATA.product.name}
             </span>
           </div>
         </div>
@@ -90,7 +101,7 @@ export default async () => {
       height: 630,
       embedFont: true,
       fonts: (await loadGoogleFonts(
-        SITE.title + SITE.desc + SITE.website
+        changelog.data.title + author.name + SITE_DATA.product.name + "by"
       )) as FontOptions[],
     }
   );

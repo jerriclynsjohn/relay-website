@@ -1,5 +1,5 @@
 ---
-import type { Author, Blog } from '@types';
+import type { Author, Changelog } from '@types';
 
 import { authorJSONLD, publisher, website } from '@utils/json-ld';
 
@@ -8,15 +8,15 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { LOCALE, TOP_NAVIGATION } from '@config';
 
 interface Props {
-  blog: Blog;
+  changelog: Changelog;
   author: Author;
 }
 
-const { blog, author }: Props = Astro.props;
+const { changelog, author }: Props = Astro.props;
 
-const title = blog.headline;
-const description = blog.description;
-const image = blog.image;
+const title = changelog.headline;
+const description = changelog.description;
+const image = changelog.image;
 
 const url = new URL(Astro.url.pathname, Astro.site).href;
 
@@ -35,8 +35,7 @@ let structuredData = [
       width: 1200,
       height: 630
     },
-    datePublished: blog.datePublished,
-    dateModified: blog.dateModified,
+    datePublished: changelog.datePublished,
     author: authorJSONLD(author),
     mainEntityOfPage: {
       '@type': 'WebPage',

@@ -1,56 +1,52 @@
 ---
+import type { Changelog } from '@types';
+
+import { paginatedChangelogs, publisher, website } from '@utils/json-ld';
+
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-import { SITE_DATA } from '@config';
+import { LOCALE, SITE_DATA, TOP_NAVIGATION } from '@config';
 
-const {
-  title = SITE_DATA.changelog.headline,
-  description = SITE_DATA.changelog.description,
-  image = SITE_DATA.changelog.image,
-  changelogs = SITE_DATA.changelog.changelogs
-} = Astro.props;
+interface Props {
+  changelogs: Changelog[];
+}
+
+const { changelogs }: Props = Astro.props;
+
+const title = SITE_DATA.changelog.headline;
+const description = SITE_DATA.changelog.description;
+const image = SITE_DATA.changelog.image;
 
 const url = new URL(Astro.url.pathname, Astro.site).href;
 
-let structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  url,
-  name: title,
-  description,
-  image,
-  publisher: {
-    '@type': 'Organization',
-    name: SITE_DATA.organization.name,
-    logo: {
+let structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': url,
+    url,
+    name: title,
+    description,
+    inLanguage: LOCALE.langTag,
+    image: {
       '@type': 'ImageObject',
-      url: SITE_DATA.organization.logo
+      url: image,
+      width: 1200,
+      height: 630
+    },
+    isPartOf: {
+      '@id': `${TOP_NAVIGATION.landing}/#website`
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: paginatedChangelogs(changelogs),
+      numberOfItems: changelogs.length,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending'
     }
   },
-  itemListElement: []
-};
-
-if (changelogs && changelogs.length > 0) {
-  structuredData = {
-    ...structuredData,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    itemListElement: changelogs.map((changelog: any, index: number) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'CreativeWork',
-        name: changelog.title,
-        description: changelog.description,
-        url: changelog.url,
-        datePublished: changelog.publishDate,
-        author: {
-          '@type': 'Person',
-          name: changelog.author
-        }
-      }
-    }))
-  };
-}
+  website(),
+  publisher()
+];
 ---
 
 <BaseLayout>
@@ -74,7 +70,11 @@ if (changelogs && changelogs.length > 0) {
     <meta property="twitter:image" content={image} />
 
     <!-- Google JSON-LD Structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(structuredData)}
+    />
   </Fragment>
 
   <slot />

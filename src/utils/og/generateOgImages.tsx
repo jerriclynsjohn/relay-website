@@ -4,6 +4,7 @@ import { type CollectionEntry } from 'astro:content';
 
 import { Resvg } from '@resvg/resvg-js';
 import postOgImage from './og-templates/blog';
+import changelogOgImage from './og-templates/changelog';
 import siteOgImage from './og-templates/site';
 
 function svgBufferToPngBuffer(svg: string) {
@@ -17,6 +18,14 @@ export async function generateOgImageForBlog(
   author: Author
 ) {
   const svg = await postOgImage(blog, author);
+  return svgBufferToPngBuffer(svg);
+}
+
+export async function generateOgImageForChangelog(
+  changelog: CollectionEntry<'changelog'>,
+  author: Author
+) {
+  const svg = await changelogOgImage(changelog, author);
   return svgBufferToPngBuffer(svg);
 }
 

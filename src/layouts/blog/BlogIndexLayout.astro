@@ -9,10 +9,9 @@ import { LOCALE, SITE_DATA, TOP_NAVIGATION } from '@config';
 
 interface Props {
   blogs: Blog[];
-  page: number;
 }
 
-const { blogs, page }: Props = Astro.props;
+const { blogs }: Props = Astro.props;
 
 const title = SITE_DATA.blog.headline;
 const description = SITE_DATA.blog.description;
@@ -42,8 +41,7 @@ let structuredData = [
       '@type': 'ItemList',
       itemListElement: paginatedBlogs(blogs),
       numberOfItems: blogs.length,
-      itemListOrder: 'https://schema.org/ItemListOrderAscending',
-      startIndex: page
+      itemListOrder: 'https://schema.org/ItemListOrderAscending'
     }
   },
   website(),
@@ -72,7 +70,11 @@ let structuredData = [
     <meta property="twitter:image" content={image} />
 
     <!-- Google JSON-LD Structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(structuredData)}
+    />
   </Fragment>
 
   <slot />
