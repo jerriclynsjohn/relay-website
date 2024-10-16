@@ -1,0 +1,154 @@
+---
+import { SITE_DATA, SOCIAL_MEDIA } from '@config';
+---
+
+<footer class="bg-black lg:p-8">
+  <div
+    class="mx-auto items-center px-8 py-12 md:px-12 lg:px-16 lg:py-24 xl:px-36 2xl:max-w-7xl">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div class="text-white">
+        <span
+          class="inline-flex items-center gap-3 text-lg font-semibold italic lg:text-2xl">
+          <svg
+            width="84"
+            height="24"
+            viewBox="0 0 84 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M2.31129 4.86374L4.94823 7.50068H0.837059C0.381781 8.62916 0.0926574 9.8425 0 11.1104H9.30554C10.3023 11.1104 11.1104 10.3023 11.1104 9.30554V0C9.8425 0.0926574 8.62916 0.381781 7.50068 0.837059V4.94823L4.86374 2.31129C3.89051 3.02933 3.02933 3.89051 2.31129 4.86374Z"
+              fill="#46A758"></path>
+            <path
+              d="M12.9153 0.00190177V9.30554C12.9153 10.3023 13.7233 11.1104 14.7201 11.1104H24C23.9073 9.8425 23.6182 8.62916 23.1629 7.50068H19.0774L21.6996 4.87851C20.983 3.90414 20.1231 3.04168 19.151 2.32219L16.525 4.94823V0.847442C15.3968 0.389264 14.1835 0.0972878 12.9153 0.00190177Z"
+              fill="#46A758"></path>
+            <path
+              d="M23.9981 12.9153H14.7201C13.7233 12.9153 12.9153 13.7233 12.9153 14.7201V23.9981C14.1835 23.9027 15.3968 23.6107 16.525 23.1526V19.0774L19.1363 21.6887C20.1095 20.9707 20.9707 20.1095 21.6887 19.1363L19.0774 16.525H23.1526C23.6107 15.3968 23.9027 14.1835 23.9981 12.9153Z"
+              fill="#46A758"></path>
+            <path
+              d="M11.1104 24V14.7201C11.1104 13.7233 10.3023 12.9153 9.30554 12.9153H0.00190205C0.0972885 14.1835 0.389265 15.3968 0.847443 16.525H4.94823L2.32219 19.151C3.04168 20.1231 3.90414 20.983 4.87851 21.6996L7.50068 19.0774V23.1629C8.62916 23.6182 9.8425 23.9073 11.1104 24Z"
+              fill="#46A758"></path>
+            <path
+              d="M83.8005 6.68372V21.1989C83.8005 22.1205 83.2936 22.6044 82.2107 22.6044H73.4555V20.8533H81.7499V16.2223L82.0955 14.8399H81.5195C81.0587 16.9135 79.6072 18.365 77.1189 18.365C74.5154 18.365 72.8104 16.8444 72.8104 13.6188V6.68372H74.8379V13.3423C74.8379 15.7154 75.7595 16.614 77.6949 16.614C80.091 16.614 81.7499 14.7938 81.7499 11.7064V6.68372H83.8005Z"
+              fill="white"></path>
+            <path
+              d="M60.2073 14.9551C60.2073 13.1349 61.3133 11.8677 64.032 11.6143L68.5248 11.1765C68.4326 9.10292 67.488 8.1122 65.4605 8.1122C63.8707 8.1122 62.6726 8.84948 62.4883 10.7618H60.4608C60.7142 8.15828 62.4653 6.45332 65.4374 6.45332C68.7782 6.45332 70.5753 8.50388 70.5753 11.5221V16.3836H72.2573V18.1346H70.1606C69.2851 18.1346 68.7782 17.6277 68.7782 16.7522V16.1992L69.1008 14.9781H68.5248C68.087 16.7292 66.8659 18.365 64.0781 18.365C60.7142 18.365 60.2073 16.1532 60.2073 14.9551ZM62.2349 14.7016C62.2349 16.0149 63.0873 16.6831 64.4006 16.6831C66.8889 16.6831 68.5248 14.932 68.5248 12.628L64.3776 13.0658C62.9721 13.204 62.2349 13.5957 62.2349 14.7016Z"
+              fill="white"></path>
+            <path
+              d="M51.1401 18.1346V16.3836H54.3426V2.95123H51.9465V1.2002H55.1951C55.9554 1.2002 56.3932 1.59187 56.3932 2.35219V16.3836H59.5958V18.1346H51.1401Z"
+              fill="white"></path>
+            <path
+              d="M39.6514 12.2594C39.6514 8.54996 41.8632 6.45332 45.1349 6.45332C48.5218 6.45332 50.7336 8.50388 50.7336 12.052V12.7893H41.6328C41.7019 15.0242 42.877 16.7292 45.2501 16.7292C47.2085 16.7292 48.3605 15.7154 48.7522 14.1256H50.7797C50.3189 16.2453 48.7982 18.365 45.2731 18.365C41.5406 18.365 39.6514 15.6463 39.6514 12.2594ZM41.6558 11.3378H48.7291C48.5909 9.2642 47.1854 8.06612 45.1349 8.06612C43.2456 8.06612 41.8171 9.2642 41.6558 11.3378Z"
+              fill="white"></path>
+            <path
+              d="M31.6797 8.27348C31.6797 7.1906 32.2096 6.68372 33.2925 6.68372H39.7667V8.43476H33.7302V18.1346H31.6797V8.27348Z"
+              fill="white"></path>
+          </svg>
+        </span>
+      </div>
+      <div
+        class="mt-0 grid grid-cols-2 gap-8 text-xs text-zinc-400 md:mt-8 xl:col-span-2">
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            <h3 class="text-sm text-white">AI</h3>
+            <ul role="list" class="mt-4 space-y-2">
+              <li>
+                <a
+                  title="Immersive AI"
+                  aria-label="Immersive AI"
+                  href="/"
+                  class="hover:text-white">
+                  Immersive AI
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-12 md:mt-0">
+            <h3 class="text-sm text-white">Company</h3>
+            <ul role="list" class="mt-4 space-y-2">
+              <li>
+                <a
+                  title="About"
+                  aria-label="About"
+                  href="/about"
+                  class="hover:text-white">
+                  About
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            <h3 class="text-sm text-white">Stay updated</h3>
+            <ul role="list" class="mt-4 space-y-2">
+              <li>
+                <a
+                  title="Relay Blog"
+                  aria-label="Relay Blog"
+                  href="/blog"
+                  class="hover:text-white">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  title="Changelog"
+                  aria-label="Changelog"
+                  href="/changelog"
+                  class="hover:text-white">
+                  Changelog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-12 md:mt-0">
+            <h3 class="text-sm text-white">Socials</h3>
+            <ul role="list" class="mt-4 space-y-2">
+              {
+                SOCIAL_MEDIA.map((social) => (
+                  <li>
+                    <a
+                      title={social.label}
+                      aria-label={social.label}
+                      href={social.url}
+                      target="_blank"
+                      class="hover:text-white">
+                      {social.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<footer class="border-t border-white/5 bg-black lg:p-8">
+  <div class="mx-auto items-center px-8 py-6 md:px-12 lg:px-16 xl:px-36 2xl:max-w-7xl">
+    <nav class="flex flex-col gap-x-8 gap-y-2 lg:flex-row">
+      <a
+        class="text-xs text-zinc-400"
+        title="Terms of use"
+        aria-label="Terms of use"
+        href="/legal/terms">
+        Terms of use
+      </a>
+      <a
+        class="text-xs text-zinc-400"
+        title="Privacy policy"
+        aria-label="Privacy policy"
+        href="/legal/privacy">
+        Privacy policy
+      </a>
+    </nav>
+    <section class="mt-6" x-data="{ year: new Date().getFullYear() }">
+      <p class="text-sm text-zinc-400 lg:col-span-2">
+        © <span>{new Date().getFullYear()}</span>
+        {SITE_DATA.organization.legalName} All rights reserved.
+      </p>
+    </section>
+  </div>
+</footer>

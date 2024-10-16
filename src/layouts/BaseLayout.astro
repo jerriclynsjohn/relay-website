@@ -1,6 +1,7 @@
 ---
 import '@styles/app.css';
 
+import Footer from '@components/common/Footer.astro';
 import BaseMeta from '@components/common/meta/BaseMeta.astro';
 import Favicons from '@components/common/meta/Favicons.astro';
 import Verifications from '@components/common/meta/Verifications.astro';
@@ -34,5 +35,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <main>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>

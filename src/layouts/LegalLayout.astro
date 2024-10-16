@@ -86,7 +86,9 @@ let structuredData = [
     />
   </Fragment>
 
-  <h1>{title}</h1>
-  <div>{new Date(datePublished).toLocaleDateString()}</div>
-  <slot />
+  <div>
+    <h1>{title}</h1>
+    <div>{new Date(datePublished).toLocaleDateString()}</div>
+    <slot />
+  </div>
 </BaseLayout>

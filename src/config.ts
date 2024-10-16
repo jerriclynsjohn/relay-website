@@ -12,29 +12,29 @@ export const LOCALE = {
 
 export const SOCIAL_MEDIA = [
   {
-    name: 'GITHUB',
+    name: 'Github',
     label: 'Relay on Github',
     url: 'https://github.com/relaynow'
   },
   {
-    name: 'FACEBOOK',
+    name: 'Facebook',
     label: 'Relay on Facebook',
-    url: 'https://www.facebook.com/relaynow'
+    url: 'https://www.facebook.com/relay.now.hq'
   },
   {
-    name: 'INSTAGRAM',
+    name: 'Instagram',
     label: 'Relay on Instagram',
-    url: 'https://www.instagram.com/relaynow'
+    url: 'https://www.instagram.com/relay_now'
   },
   {
-    name: 'LINKEDIN',
+    name: 'LinkedIn',
     label: 'Relay on LinkedIn',
     url: 'https://www.linkedin.com/company/relaynow'
   },
   {
-    name: 'X',
-    label: 'Relay on X',
-    url: 'https://x.com/relaynow'
+    name: 'X (Twitter)',
+    label: 'Relay on X (Twitter)',
+    url: 'https://x.com/relay_now'
   }
 ];
 
