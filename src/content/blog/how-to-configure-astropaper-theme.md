@@ -1,5 +1,5 @@
 ---
-author: Sat Naing
+author: jerric
 pubDatetime: 2022-09-23T04:58:53Z
 modDatetime: 2024-10-14T09:27:28.605Z
 title: How to configure AstroPaper theme
@@ -25,20 +25,20 @@ During development, it's okay to leave `SITE.website` empty. But in production m
 ```js
 // file: src/config.ts
 export const SITE = {
-  website: "https://astro-paper.pages.dev/",
-  author: "Sat Naing",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
-  ogImage: "astropaper-og.jpg",
+  website: 'https://astro-paper.pages.dev/',
+  author: 'Sat Naing',
+  desc: 'A minimal, responsive and SEO-friendly Astro blog theme.',
+  title: 'AstroPaper',
+  ogImage: 'astropaper-og.jpg',
   lightAndDarkMode: true,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   editPost: {
-    url: "https://github.com/satnaing/astro-paper/edit/main/src/content/blog",
-    text: "Suggest Changes",
-    appendFilePath: true,
-  },
+    url: 'https://github.com/satnaing/astro-paper/edit/main/src/content/blog',
+    text: 'Suggest Changes',
+    appendFilePath: true
+  }
 };
 ```
 
@@ -85,7 +85,7 @@ export const LOGO_IMAGE = {
   enable: false,
   svg: true,
   width: 216,
-  height: 46,
+  height: 46
 };
 ```
 

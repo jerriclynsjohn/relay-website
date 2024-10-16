@@ -6,7 +6,7 @@ interface GroupFunction<T> {
   (item: T, index?: number): GroupKey;
 }
 
-const getPostsByGroupCondition = (
+const getBlogsByGroupCondition = (
   posts: CollectionEntry<'blog'>[],
   groupFunction: GroupFunction<CollectionEntry<'blog'>>
 ) => {
@@ -22,4 +22,4 @@ const getPostsByGroupCondition = (
   return result;
 };
 
-export default getPostsByGroupCondition;
+export default getBlogsByGroupCondition;

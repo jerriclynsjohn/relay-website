@@ -1,6 +1,6 @@
 ---
 title: How to add an estimated reading time in AstroPaper
-author: Sat Naing
+author: jerric
 pubDatetime: 2023-07-21T10:11:06.130Z
 modDatetime: 2024-01-03T14:53:25Z
 slug: how-to-add-estimated-reading-time
@@ -26,8 +26,8 @@ npm install reading-time mdast-util-to-string
 Step (2) Create `remark-reading-time.mjs` file under `utils` directory
 
 ```js
-import getReadingTime from "reading-time";
-import { toString } from "mdast-util-to-string";
+import { toString } from 'mdast-util-to-string';
+import getReadingTime from 'reading-time';
 
 export function remarkReadingTime() {
   return function (tree, { data }) {
@@ -43,7 +43,7 @@ export function remarkReadingTime() {
 Step (3) Add the plugin to `astro.config.ts`
 
 ```js
-import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs"; // make sure your relative path is correct
+import { remarkReadingTime } from './src/utils/remark-reading-time.mjs'; // make sure your relative path is correct
 
 // https://astro.build/config
 export default defineConfig({
@@ -58,12 +58,12 @@ export default defineConfig({
       [
         remarkCollapse,
         {
-          test: "Table of contents",
-        },
-      ],
-    ],
+          test: 'Table of contents'
+        }
+      ]
+    ]
     // other config
-  },
+  }
   // other config
 });
 ```
@@ -71,17 +71,18 @@ export default defineConfig({
 Step (4) Add `readingTime` to blog schema (`src/content/config.ts`)
 
 ```ts
-import { SITE } from "@config";
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content';
+
+import { SITE } from '@config';
 
 const blog = defineCollection({
-  type: "content",
+  type: 'content',
   schema: ({ image }) =>
     z.object({
       // others...
       canonicalURL: z.string().optional(),
-      readingTime: z.string().optional(), // 👈🏻 readingTime frontmatter
-    }),
+      readingTime: z.string().optional() // 👈🏻 readingTime frontmatter
+    })
 });
 
 export const collections = { blog };
@@ -90,8 +91,9 @@ export const collections = { blog };
 Step (5) Create a new file called `getPostsWithRT.ts` under `src/utils` directory.
 
 ```ts
-import type { CollectionEntry } from "astro:content";
-import { slugifyStr } from "./slugify";
+import type { CollectionEntry } from 'astro:content';
+
+import { slugifyStr } from './slugify';
 
 interface Frontmatter {
   frontmatter: {
@@ -102,27 +104,24 @@ interface Frontmatter {
 
 export const getReadingTime = async () => {
   // Get all posts using glob. This is to get the updated frontmatter
-  const globPosts = import.meta.glob<Frontmatter>("../content/blog/*.md");
+  const globPosts = import.meta.glob<Frontmatter>('../content/blog/*.md');
 
   // Then, set those frontmatter value in a JS Map with key value pair
   const mapFrontmatter = new Map();
   const globPostsValues = Object.values(globPosts);
   await Promise.all(
-    globPostsValues.map(async globPost => {
+    globPostsValues.map(async (globPost) => {
       const { frontmatter } = await globPost();
-      mapFrontmatter.set(
-        slugifyStr(frontmatter.title),
-        frontmatter.minutesRead
-      );
+      mapFrontmatter.set(slugifyStr(frontmatter.title), frontmatter.minutesRead);
     })
   );
 
   return mapFrontmatter;
 };
 
-const getPostsWithRT = async (posts: CollectionEntry<"blog">[]) => {
+const getPostsWithRT = async (posts: CollectionEntry<'blog'>[]) => {
   const mapFrontmatter = await getReadingTime();
-  return posts.map(post => {
+  return posts.map((post) => {
     post.data.readingTime = mapFrontmatter.get(slugifyStr(post.data.title));
     return post;
   });
@@ -188,22 +187,19 @@ By following the previous steps, you can now access `readingTime` frontmatter pr
 Step (1) Update `utils/getSortedPosts.ts` as the following
 
 ```ts
-import type { CollectionEntry } from "astro:content";
-import getPostsWithRT from "./getPostsWithRT";
+import type { CollectionEntry } from 'astro:content';
 
-const getSortedPosts = async (posts: CollectionEntry<"blog">[]) => {
+import getPostsWithRT from './getPostsWithRT';
+
+const getSortedPosts = async (posts: CollectionEntry<'blog'>[]) => {
   // make sure that this func is async
   const postsWithRT = await getPostsWithRT(posts); // add reading time
   return postsWithRT
     .filter(({ data }) => !data.draft)
     .sort(
       (a, b) =>
-        Math.floor(
-          new Date(b.data.modDatetime ?? b.data.pubDatetime).getTime() / 1000
-        ) -
-        Math.floor(
-          new Date(a.data.modDatetime ?? a.data.pubDatetime).getTime() / 1000
-        )
+        Math.floor(new Date(b.data.modDatetime ?? b.data.pubDatetime).getTime() / 1000) -
+        Math.floor(new Date(a.data.modDatetime ?? a.data.pubDatetime).getTime() / 1000)
     );
 };
 
@@ -242,7 +238,7 @@ Moreover, update the `getStaticPaths` of `src/pages/tags/[tag]/[page].astro` lik
 
 ```ts
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
 
   const tags = getUniqueTags(posts);
 
@@ -252,9 +248,9 @@ export async function getStaticPaths() {
       const tagPosts = await getPostsByTag(posts, tag);
       const totalPages = getPageNumbers(tagPosts.length);
 
-      return totalPages.map(page => ({
+      return totalPages.map((page) => ({
         params: { tag, page: String(page) },
-        props: { tag, tagName },
+        props: { tag, tagName }
       }));
     })
   );

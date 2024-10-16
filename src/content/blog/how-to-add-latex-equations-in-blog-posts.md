@@ -1,5 +1,5 @@
 ---
-author: Alberto Perdomo
+author: jerric
 pubDatetime: 2024-09-08T20:58:52.737Z
 title: Adding LaTeX Equations in AstroPaper blog posts
 featured: false
@@ -23,8 +23,8 @@ In this section, you will find instructions on how to add support for LaTeX in y
 
 ```ts
 // other imports
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 
 export default defineConfig({
   // other configs
@@ -35,13 +35,13 @@ export default defineConfig({
       [
         remarkCollapse,
         {
-          test: "Table of contents",
-        },
-      ],
+          test: 'Table of contents'
+        }
+      ]
     ],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex]
     // other markdown configs
-  },
+  }
   // other configs
 });
 ```
@@ -50,7 +50,7 @@ export default defineConfig({
 
 ```astro
 ---
-import { LOCALE, SITE } from "@config";
+import { LOCALE, SITE } from '@config';
 
 // astro code
 ---

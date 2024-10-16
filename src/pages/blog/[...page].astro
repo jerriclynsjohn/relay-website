@@ -1,0 +1,56 @@
+---
+import type { Blog } from '@types';
+import type { GetStaticPaths } from 'astro';
+
+import { getCollection, getEntry } from 'astro:content';
+
+import getSortedBlogs from '@utils/getSortedBlogs';
+import { slugifyStr } from '@utils/slugify';
+
+import BlogIndexLayout from '@layouts/blog/BlogIndexLayout.astro';
+
+import Pagination from '@components/common/Pagination.astro';
+import { POST_PER_INDEX, TOP_NAVIGATION } from '@config';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const blogs = await getCollection('blog', ({ data }) => !data.draft);
+  const sortedBlogs = getSortedBlogs(blogs);
+  return paginate(sortedBlogs, { pageSize: POST_PER_INDEX });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+const blogs: Blog[] = await Promise.all(
+  page.data.map(async (blog) => {
+    const author = await getEntry('author', blog.data.author.id);
+    const ogImageUrl =
+      typeof blog.data.ogImage === 'string' ? blog.data.ogImage : blog.data.ogImage?.src;
+    const ogUrl = new URL(
+      ogImageUrl ?? `/blog/${slugifyStr(blog.data.title)}.png`,
+      Astro.url.origin
+    ).href;
+    console.log(blog.id);
+    return {
+      headline: blog.data.title,
+      description: blog.data.description,
+      author: author.data,
+      datePublished: blog.data.pubDatetime.toISOString(),
+      dateModified: blog.data.modDatetime?.toISOString() ?? '',
+      image: ogUrl,
+      url: `${TOP_NAVIGATION.blog}/${blog.id}`
+    } satisfies Blog;
+  })
+);
+---
+
+<BlogIndexLayout blogs={blogs} page={page.start}>
+  <div class="flex min-h-screen flex-col items-center justify-center">
+    <h1 class="text-4xl font-bold">Blog</h1>
+    <p class="text-lg">The only assistant you will ever need!</p>
+    <ul>
+      {page.data.map((blog) => <li class="text-lg text-gray-700">{blog.data.title}</li>)}
+    </ul>
+  </div>
+
+  <Pagination page={page} />
+</BlogIndexLayout>

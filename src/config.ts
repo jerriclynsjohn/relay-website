@@ -1,8 +1,8 @@
-import type { Metadata, Site, SocialObjects } from './types';
+import type { Metadata, Site, SocialObjects } from '@types';
 
 export const LOCALE = {
   lang: 'en', // html lang code. Set this empty and default will be "en"
-  langTag: ['en-EN'] // BCP 47 Language Tags. Set this empty [] to use the environment default
+  langTag: 'en-US' // BCP 47 Language Tags. Set this empty [] to use the environment default
 };
 
 export const SOCIAL_MEDIA = [
@@ -37,6 +37,23 @@ export const VERIFICATION_TOKENS = {
   google: 'google-site-verification=1234567890'
 };
 
+export const TOP_NAVIGATION = {
+  landing: 'https://www.relay.now',
+  blog: 'https://www.relay.now/blog',
+  changelog: 'https://www.relay.now/changelog',
+  privacy: 'https://www.relay.now/legal/privacy',
+  terms: 'https://www.relay.now/legal/terms',
+  about: 'https://www.relay.now/about',
+  // TODO: Add these
+  contact: 'https://www.relay.now/contact',
+  support: 'https://www.relay.now/support',
+  pricing: 'https://www.relay.now/pricing',
+  documentation: 'https://www.relay.now/docs'
+};
+
+export const POST_PER_INDEX = 6;
+export const SCHEDULED_POST_MARGIN = 15 * 60 * 1000; // 15 minutes
+
 export const SITE_DATA: Metadata = {
   organization: {
     name: 'Relay',
@@ -45,13 +62,13 @@ export const SITE_DATA: Metadata = {
     contactPoint: {
       email: 'hello@relay.now'
     },
-    url: 'https://www.relay.now/about',
+    url: TOP_NAVIGATION.about,
     logo: 'https://www.relay.now/logo/relay/logo.png',
     slogan: 'Building seamless experiences with AI',
-    sameAs: ['https://www.relay.now/', ...SOCIAL_MEDIA.map((sm) => sm.url)],
+    sameAs: [TOP_NAVIGATION.landing, ...SOCIAL_MEDIA.map((sm) => sm.url)],
     legalName: 'Relay Intelligence, Inc.',
     foundingDate: '2024-10-01',
-    knowsLanguage: ['en'],
+    knowsLanguage: [LOCALE.lang],
     knowsAbout: [
       'https://www.wikidata.org/wiki/Q11660', // Artificial Intelligence
       'https://www.wikidata.org/wiki/Q1142726' // Intelligent Agent
@@ -62,21 +79,21 @@ export const SITE_DATA: Metadata = {
     description:
       'At Relay, we want to advance the experience of interacting with AI Agents.',
     image: 'https://www.relay.now/images/social/relay-og.jpg',
-    url: 'https://www.relay.now/'
+    url: TOP_NAVIGATION.landing
   },
   blog: {
     headline: 'Blog - Updates from Relay team',
     description:
       'Stay informed with our latest insights and updates on AI, user experience design, and the future of human-AI interaction. Our blog covers a wide range of topics including AI agent development, natural language processing, machine learning advancements, and practical applications of AI in various industries.',
     image: 'https://www.relay.now/images/social/relay-blog-og.jpg',
-    url: 'https://www.relay.now/blog'
+    url: TOP_NAVIGATION.blog
   },
   changelog: {
     headline: 'Changelog - Relay',
     description:
       'Stay up-to-date with our latest product updates, feature releases, and improvements. Our changelog provides a detailed record of all modifications and enhancements made to Relay, helping you track our progress and understand new capabilities as they become available.',
     image: 'https://www.relay.now/images/social/relay-changelog-og.jpg',
-    url: 'https://www.relay.now/changelog'
+    url: TOP_NAVIGATION.changelog
   }
 };
 

@@ -1,11 +1,9 @@
 import { glob } from 'astro/loaders';
 
-import { defineCollection, z } from 'astro:content';
-
-import { SITE } from '@config';
+import { defineCollection, reference, z } from 'astro:content';
 
 const changelog = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/changelog' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/changelog' }),
   schema: z.object({
     page: z.string(),
     description: z.string(),
@@ -18,18 +16,29 @@ const changelog = defineCollection({
 });
 
 const legal = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/legals' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/legals' }),
   schema: z.object({
     page: z.string(),
     pubDate: z.date().optional()
   })
 });
 
+const author = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/author' }),
+  schema: z.object({
+    name: z.string(),
+    jobTitle: z.string(),
+    url: z.string()
+  })
+});
+// Do not format this file
+// prettier-ignore
+
 const blog = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/blogs' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({
-      author: z.string().default(SITE.author),
+      author: reference('author'),
       pubDatetime: z.date(),
       modDatetime: z.date().optional().nullable(),
       title: z.string(),
@@ -58,5 +67,6 @@ const blog = defineCollection({
 export const collections = {
   changelog,
   legal,
+  author,
   blog
 };

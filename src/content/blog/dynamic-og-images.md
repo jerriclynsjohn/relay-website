@@ -1,5 +1,5 @@
 ---
-author: Sat Naing
+author: jerric
 pubDatetime: 2022-12-28T04:59:04.866Z
 title: Dynamic OG image generation in AstroPaper blog posts
 slug: dynamic-og-image-generation-in-astropaper-blog-posts
@@ -38,7 +38,7 @@ Dynamic OG images will be generated at build time for blog posts that
 
 ## Anatomy of AstroPaper dynamic OG image
 
-Dynamic OG image of AstroPaper includes _the blog post title_, _author name_ and _site title_. Author name and site title will be retrieved via `SITE.author` and `SITE.title` of **"src/config.ts"** file. The title is generated from the blog post frontmatter `title`.  
+Dynamic OG image of AstroPaper includes _the blog post title_, _author name_ and _site title_. Author name and site title will be retrieved via `SITE.author` and `SITE.title` of **"src/config.ts"** file. The title is generated from the blog post frontmatter `title`.
 ![Example Dynamic OG Image link](https://user-images.githubusercontent.com/53733092/209704501-e9c2236a-3f4d-4c67-bab3-025aebd63382.png)
 
 ### Issue Non-Latin Characters
@@ -50,29 +50,27 @@ Titles with non-latin characters won't display properly out of the box. To resol
 
 async function loadGoogleFonts(
   text: string
-): Promise<
-  Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>
-> {
+): Promise<Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>> {
   const fontsConfig = [
     {
-      name: "Noto Sans JP",
-      font: "Noto+Sans+JP",
+      name: 'Noto Sans JP',
+      font: 'Noto+Sans+JP',
       weight: 400,
-      style: "normal",
+      style: 'normal'
     },
     {
-      name: "Noto Sans JP",
-      font: "Noto+Sans+JP:wght@700",
+      name: 'Noto Sans JP',
+      font: 'Noto+Sans+JP:wght@700',
       weight: 700,
-      style: "normal",
+      style: 'normal'
     },
-    { name: "Noto Sans", font: "Noto+Sans", weight: 400, style: "normal" },
+    { name: 'Noto Sans', font: 'Noto+Sans', weight: 400, style: 'normal' },
     {
-      name: "Noto Sans",
-      font: "Noto+Sans:wght@700",
+      name: 'Noto Sans',
+      font: 'Noto+Sans:wght@700',
       weight: 700,
-      style: "normal",
-    },
+      style: 'normal'
+    }
   ];
   // other codes
 }

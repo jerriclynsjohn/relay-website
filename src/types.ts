@@ -52,7 +52,7 @@ export type Metadata = {
   };
 };
 
-type Organization = {
+export type Organization = {
   name: string;
   description: string;
   contactPoint: ContactPoint;
@@ -66,11 +66,11 @@ type Organization = {
   knowsAbout: string[];
 };
 
-type ContactPoint = {
+export type ContactPoint = {
   email: string;
 };
 
-type Product = {
+export type Product = {
   name: string;
   description: string;
   image: string;
@@ -79,31 +79,30 @@ type Product = {
   priceCurrency?: string;
 };
 
-type Feature = {
+export type Feature = {
   name: string;
   description: string;
   image: string;
   url: string;
 };
 
-type Blog = {
+export type Blog = {
   headline: string;
   description: string;
-  author: Author[];
+  author: Author;
   datePublished: string;
   dateModified: string;
   image: string;
   url: string;
-  publisher: string;
 };
 
-type Author = {
+export type Author = {
   name: string;
   jobTitle: string;
   url: string;
 };
 
-type Changelog = {
+export type Changelog = {
   name: string;
   description: string;
   image: string;

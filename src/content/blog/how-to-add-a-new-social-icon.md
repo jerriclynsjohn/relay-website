@@ -1,5 +1,5 @@
 ---
-author: Simon Smale
+author: jerric
 pubDatetime: 2024-01-08T18:16:00.000Z
 modDatetime:
 title: How to add a new Social Icon to AstroPaper
@@ -47,8 +47,7 @@ Searching on Tabler for 'StackOverflow' we get a single icon <https://tabler.io/
   stroke="currentColor"
   fill="none"
   stroke-linecap="round"
-  stroke-linejoin="round"
->
+  stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 17v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-1" />
   <path d="M8 16h8" />
@@ -102,7 +101,7 @@ const socialIcons = {
        <path d="M8.322 12.582l7.956 .836" />
        <path d="M8.787 9.168l7.826 1.664" />
        <path d="M10.096 5.764l7.608 2.472" />
-     </svg>`,
+     </svg>`
 };
 ```
 
@@ -112,11 +111,11 @@ Finally we can configure it for our blog in `src/config.ts` under `SOCIALS`. Set
 export const SOCIALS: SocialObjects = [
   /* others */
   {
-    name: "StackOverflow",
-    href: "https://stackoverflow.com/search?q=astropaper",
+    name: 'StackOverflow',
+    href: 'https://stackoverflow.com/search?q=astropaper',
     linkTitle: `See what questions there are about ${SITE.title} on StackOverflow`,
-    active: true,
-  },
+    active: true
+  }
 ];
 ```
 

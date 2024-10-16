@@ -1,5 +1,5 @@
 ---
-author: FjellOverflow
+author: jerric
 pubDatetime: 2024-07-25T11:11:53Z
 modDatetime: 2024-09-25T12:07:53Z
 title: How to integrate Giscus comments into AstroPaper
@@ -71,8 +71,7 @@ You should now have a script tag that looks like this:
   data-theme="preferred_color_scheme"
   data-lang="en"
   crossorigin="anonymous"
-  async
-></script>
+  async></script>
 ```
 
 Simply add that to the source code of the site. Most likely, if you're using _AstroPaper_ and want to enable comments on posts, navigate to `src/layouts/PostDetails.astro` and paste it into the desired location where you want the comments to appear, perhaps underneath the `Share this post on:` buttons.
