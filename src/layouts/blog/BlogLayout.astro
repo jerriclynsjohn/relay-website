@@ -1,0 +1,79 @@
+---
+import type { Author, Blog } from '@types';
+
+import { authorJSONLD, publisher, website } from '@utils/json-ld';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+import { LOCALE, TOP_NAVIGATION } from '@config';
+
+interface Props {
+  blog: Blog;
+  author: Author;
+}
+
+const { blog, author }: Props = Astro.props;
+
+const title = blog.headline;
+const description = blog.description;
+const image = blog.image;
+
+const url = new URL(Astro.url.pathname, Astro.site).href;
+
+let structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': url,
+    url,
+    headline: title,
+    description,
+    inLanguage: LOCALE.langTag,
+    image: {
+      '@type': 'ImageObject',
+      url: image,
+      width: 1200,
+      height: 630
+    },
+    datePublished: blog.datePublished,
+    dateModified: blog.dateModified,
+    author: authorJSONLD(author),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url
+    },
+    isPartOf: {
+      '@id': `${TOP_NAVIGATION.landing}/#website`
+    }
+  },
+  website(),
+  publisher()
+];
+---
+
+<BaseLayout>
+  <Fragment slot="meta">
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Google JSON-LD Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <slot />
+</BaseLayout>

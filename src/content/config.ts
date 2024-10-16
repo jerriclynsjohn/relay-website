@@ -24,15 +24,26 @@ const legal = defineCollection({
 });
 
 const author = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.yml', base: './src/content/author' }),
+  loader: glob({ pattern: '**/*.yml', base: './src/content/author' }),
   schema: z.object({
     name: z.string(),
     jobTitle: z.string(),
-    url: z.string()
+    url: z.string(),
+    image: z
+      .object({
+        url: z.string(),
+        width: z.number().optional(),
+        height: z.number().optional()
+      })
+      .optional(),
+    socials: z
+      .object({
+        linkedin: z.string().optional(),
+        x: z.string().optional()
+      })
+      .optional()
   })
 });
-// Do not format this file
-// prettier-ignore
 
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),

@@ -1,3 +1,10 @@
 name: Jerric Lyns John
 jobTitle: Founder
 url: https://www.jerric.xyz
+image:
+  url: 'https://www.relay.now/images/authors/jerric.jpg'
+  width: 400
+  height: 400
+socials:
+  linkedin: https://linkedin.com/in/jerriclynsjohn
+  x: https://x.com/jerriclynsjohn

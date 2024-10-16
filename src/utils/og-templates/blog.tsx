@@ -2,8 +2,10 @@ import satori from "satori";
 import type { CollectionEntry } from "astro:content";
 import { SITE } from "@config";
 import loadGoogleFonts, { type FontOptions } from "../loadGoogleFont";
+import type { Author } from "@types";
 
-export default async (post: CollectionEntry<"blog">) => {
+export default async (blog: CollectionEntry<"blog">, author: Author) => {
+
   return satori(
     <div
       style={{
@@ -62,7 +64,7 @@ export default async (post: CollectionEntry<"blog">) => {
               overflow: "hidden",
             }}
           >
-            {post.data.title}
+            {blog.data.title}
           </p>
           <div
             style={{
@@ -83,7 +85,7 @@ export default async (post: CollectionEntry<"blog">) => {
                 "
               </span>
               <span style={{ overflow: "hidden", fontWeight: "bold" }}>
-                {post.data.author}
+                {author.name }
               </span>
             </span>
 
@@ -99,7 +101,7 @@ export default async (post: CollectionEntry<"blog">) => {
       height: 630,
       embedFont: true,
       fonts: (await loadGoogleFonts(
-        post.data.title + post.data.author + SITE.title + "by"
+        blog.data.title + author.name + SITE.title + "by"
       )) as FontOptions[],
     }
   );

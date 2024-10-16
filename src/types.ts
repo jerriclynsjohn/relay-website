@@ -100,6 +100,14 @@ export type Author = {
   name: string;
   jobTitle: string;
   url: string;
+  image: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  socials: {
+    [key: string]: string;
+  }[];
 };
 
 export type Changelog = {

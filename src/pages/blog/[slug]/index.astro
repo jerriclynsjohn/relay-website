@@ -1,0 +1,63 @@
+---
+import type { Author, Blog } from '@types';
+import type { CollectionEntry } from 'astro:content';
+
+import { getCollection, getEntry, render } from 'astro:content';
+
+import { slugifyStr } from '@utils/slugify';
+
+import BlogLayout from '@layouts/blog/BlogLayout.astro';
+
+import { TOP_NAVIGATION } from '@config';
+
+export interface Props {
+  blog: CollectionEntry<'blog'>;
+}
+
+export async function getStaticPaths() {
+  const blogs = await getCollection('blog', ({ data }) => !data.draft);
+
+  const blogResult = blogs.map((blog) => ({
+    params: { slug: blog.id },
+    props: { blog }
+  }));
+
+  return blogResult;
+}
+
+const { blog } = Astro.props;
+
+const author = await getEntry('author', blog.data.author.id);
+
+const ogImageUrl =
+  typeof blog.data.ogImage === 'string' ? blog.data.ogImage : blog.data.ogImage?.src;
+const ogUrl = new URL(
+  ogImageUrl ?? `/blog/${slugifyStr(blog.data.title)}.png`,
+  Astro.url.origin
+).href;
+
+const computedBlog = {
+  headline: blog.data.title,
+  description: blog.data.description,
+  datePublished: blog.data.pubDatetime.toISOString(),
+  dateModified: blog.data.modDatetime?.toISOString() ?? '',
+  image: ogUrl,
+  url: `${TOP_NAVIGATION.blog}/${blog.id}`,
+  author: author.data as Author
+} satisfies Blog;
+
+const { Content } = await render(blog);
+---
+
+<BlogLayout blog={computedBlog} author={author.data as Author}>
+  <a href="/blog" class="inline-block bg-slate-300 p-4 text-xl font-bold">Back</a>
+  <div class="text-2xl font-bold">
+    {blog.data.title}
+  </div>
+  <div class="text-xl">
+    {blog.data.description}
+  </div>
+  <div class="mt-4 px-4">
+    <Content class="prose" />
+  </div>
+</BlogLayout>

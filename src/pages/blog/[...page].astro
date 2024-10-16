@@ -1,5 +1,5 @@
 ---
-import type { Blog } from '@types';
+import type { Author, Blog } from '@types';
 import type { GetStaticPaths } from 'astro';
 
 import { getCollection, getEntry } from 'astro:content';
@@ -29,11 +29,11 @@ const blogs: Blog[] = await Promise.all(
       ogImageUrl ?? `/blog/${slugifyStr(blog.data.title)}.png`,
       Astro.url.origin
     ).href;
-    console.log(blog.id);
+
     return {
       headline: blog.data.title,
       description: blog.data.description,
-      author: author.data,
+      author: author.data as Author,
       datePublished: blog.data.pubDatetime.toISOString(),
       dateModified: blog.data.modDatetime?.toISOString() ?? '',
       image: ogUrl,
@@ -48,7 +48,13 @@ const blogs: Blog[] = await Promise.all(
     <h1 class="text-4xl font-bold">Blog</h1>
     <p class="text-lg">The only assistant you will ever need!</p>
     <ul>
-      {page.data.map((blog) => <li class="text-lg text-gray-700">{blog.data.title}</li>)}
+      {
+        page.data.map((blog) => (
+          <li class="text-lg text-gray-700">
+            <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 
