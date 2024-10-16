@@ -4,6 +4,7 @@ import '@styles/app.css';
 import BaseMeta from '@components/common/meta/BaseMeta.astro';
 import Favicons from '@components/common/meta/Favicons.astro';
 import Verifications from '@components/common/meta/Verifications.astro';
+import Navigation from '@components/common/Navigation.astro';
 import { LOCALE, VERIFICATION_TOKENS } from '@config';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -29,6 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
   </head>
 
   <body>
+    <Navigation />
     <main>
       <slot />
     </main>
