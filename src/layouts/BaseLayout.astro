@@ -1,6 +1,8 @@
 ---
 import '@styles/app.css';
 
+import { ModeWatcher } from 'mode-watcher';
+
 import Footer from '@components/common/Footer.astro';
 import BaseMeta from '@components/common/meta/BaseMeta.astro';
 import Favicons from '@components/common/meta/Favicons.astro';
@@ -12,7 +14,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
-<html lang=`${LOCALE.lang ?? "en"}` class="smooth-scroll">
+<html lang=`${LOCALE.lang ?? "en"}` class="smooth-scroll antialiased">
   <head>
     <BaseMeta />
 
@@ -27,10 +29,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <slot name="meta" />
 
     <!-- Toggle Theme -->
-    <script is:inline src="/toggle-theme.js" async></script>
+    <script is:inline>
+      const isBrowser = typeof localStorage !== 'undefined';
+      const getThemePreference = () => {
+        if (isBrowser && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      };
+      const isDark = getThemePreference() === 'dark';
+      document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+
+      if (isBrowser) {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      }
+    </script>
   </head>
 
-  <body class="flex min-h-svh flex-col bg-white">
+  <body class="flex min-h-svh flex-col bg-white dark:bg-black">
+    <ModeWatcher client:load />
     <Navigation />
     <main>
       <slot />
