@@ -39,7 +39,7 @@ export const SOCIAL_MEDIA = [
 ];
 
 export const VERIFICATION_TOKENS = {
-  google: 'google-site-verification=1234567890'
+  google: 'CTFAJdMvNtMYle0185pD9Mx-CTR-a-QrWTN7OfqYW8w'
 };
 
 export const TOP_NAVIGATION = {
